@@ -316,7 +316,7 @@
             <End Role="TGuild" EntitySet="Guilds" />
             <End Role="TGuildApply" EntitySet="GuildApplies" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="TPlayer">
           <Key>
             <PropertyRef Name="ID" />
