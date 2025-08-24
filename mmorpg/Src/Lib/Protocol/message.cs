@@ -329,6 +329,9 @@ namespace SkillBridge.Message
         [global::ProtoBuf.ProtoMember(30, Name = @"chat")]
         public ChatRequest Chat { get; set; }
 
+        [global::ProtoBuf.ProtoMember(31)]
+        public FirstTestRequest firstRequest { get; set; }
+
     }
 
     [global::ProtoBuf.ProtoContract()]
@@ -427,6 +430,19 @@ namespace SkillBridge.Message
 
         [global::ProtoBuf.ProtoMember(100)]
         public StatusNotify statusNotify { get; set; }
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class FirstTestRequest : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"helloword")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Helloword { get; set; } = "";
 
     }
 

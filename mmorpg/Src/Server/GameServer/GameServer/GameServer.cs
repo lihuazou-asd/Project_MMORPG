@@ -25,10 +25,11 @@ namespace GameServer
             int Port = Properties.Settings.Default.ServerPort;
             network = new NetService();
             network.Init(Port);
-            DBService.Instance.Init();
-            DataManager.Instance.Load();
-            MapService.Instance.Init();
-            UserService.Instance.Init();
+            //DBService.Instance.Init();
+            //DataManager.Instance.Load();
+            //MapService.Instance.Init();
+            //UserService.Instance.Init();
+            FirstTestService.Instance.Init();
             //ItemService.Instance.Init();
             //QuestService.Instance.Init();
             //FriendService.Instance.Init();
@@ -43,6 +44,7 @@ namespace GameServer
         public void Start()
         {
             network.Start();
+            FirstTestService.Instance.Start();
             running = true;
             thread.Start();
         }
