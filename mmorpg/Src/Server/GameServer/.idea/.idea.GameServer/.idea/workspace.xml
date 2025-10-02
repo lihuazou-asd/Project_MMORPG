@@ -8,12 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cf18840-1175-4082-9cf0-ab10dd89ac4b" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/GameServer/Entities/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameServer/Entities/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameServer/GameServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameServer/GameServer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameServer/Managers/CharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameServer/Managers/CharacterManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameServer/Managers/DataManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameServer/Managers/DataManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameServer/Models/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameServer/Models/Map.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameServer/Services/UserSerevice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameServer/Services/UserSerevice.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameServer/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,35 +21,35 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80c6eca64910470daab7667ba12f0a8345000/e6/218adac7/LogManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="31imImaLlVvKlN9iOz3Q3929eBK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlserver",
-      "sqlserver.localdb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlserver&quot;,
+      &quot;sqlserver.localdb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="附加到 Unity 编辑器.附加到 Unity 编辑器">
     <configuration name="GameServer" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -102,6 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756015191069</updated>
       <workItem from="1756015193008" duration="1490000" />
+      <workItem from="1756033690243" duration="972000" />
     </task>
     <servers />
   </component>
