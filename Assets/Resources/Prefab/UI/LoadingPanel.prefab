@@ -518,6 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93644782624827238}
   - component: {fileID: 5702259466948627746}
+  - component: {fileID: 7263127522472403314}
   m_Layer: 5
   m_Name: LoadingPanel
   m_TagString: Untagged
@@ -555,3 +556,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8387686378751425464}
   m_CullTransparentMesh: 1
+--- !u!114 &7263127522472403314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387686378751425464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0852767c05602784db62ea5355dc8450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 549238526719161834}
+  textProgress: {fileID: 7950618167671321996}
+  LoginPanel: {fileID: 0}
