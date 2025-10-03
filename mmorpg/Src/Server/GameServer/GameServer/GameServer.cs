@@ -1,18 +1,19 @@
-﻿using System;
+﻿using Common;
+using GameServer.Managers;
+using GameServer.Network;
+using GameServer.Services;
+using log4net;
+using Network;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
-using GameServer.Network;
-using System.Configuration;
-
+using System.Text;
 using System.Threading;
-
-using Network;
-using GameServer.Services;
-using GameServer.Managers;
+using System.Threading.Tasks;
 namespace GameServer
 {
     class GameServer
@@ -25,7 +26,7 @@ namespace GameServer
             int Port = Properties.Settings.Default.ServerPort;
             network = new NetService();
             network.Init(Port);
-            //DBService.Instance.Init();
+            DBService.Instance.Init();
             //DataManager.Instance.Load();
             //MapService.Instance.Init();
             UserService.Instance.Init();
@@ -39,6 +40,33 @@ namespace GameServer
             thread = new Thread(new ThreadStart(this.Update));
 
             return true;
+
+            //DBService.Instance.Init();
+            //DBService.Instance.Entities.Users.Add(new TUser() { Username = "111", Password = "111", Player = null });
+            //DBService.Instance.Entities.SaveChanges();
+            //Log.Info("成功");
+            //thread = new Thread(new ThreadStart(this.Update));
+            //return true;
+
+
+            //using (SqlConnection connection = new SqlConnection("Data Source=LAPTOP-JD6P6CNV\\MMORPG;Initial Catalog=ExtremeWorld;User Id=sa;Password=123456;MultipleActiveResultSets=true;"))
+            //{
+            //    try
+            //    {
+            //        Log.Info("Test");
+            //        connection.Open();
+            //        Log.Info("成功");
+            //    }
+
+            //    catch (Exception ex)
+            //    {
+            //        Log.Info("失败" + ex.Message);
+            //    }
+
+            //}
+
+            //return true;
+
         }
 
         public void Start()

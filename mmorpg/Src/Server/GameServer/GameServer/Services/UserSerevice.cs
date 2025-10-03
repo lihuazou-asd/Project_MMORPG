@@ -74,7 +74,7 @@ namespace GameServer.Services
 
         void OnRegister(NetConnection<NetSession> conn, UserRegisterRequest request)
         {
-            Log.InfoFormat("UserRegisterRequest: User:{0}  Pass:{1}", request.User, request.Passward);
+            Log.InfoFormat("Service_UserRegisterRequest: User:{0}  Pass:{1}", request.User, request.Passward);
             conn.Session.Response.userRegister = new UserRegisterResponse();
 
 
@@ -83,6 +83,7 @@ namespace GameServer.Services
             {
                 conn.Session.Response.userRegister.Result = Result.Failed;
                 conn.Session.Response.userRegister.Errormsg = "用户已存在.";
+                Log.InfoFormat("用户已存在");
             }
             else
             {
@@ -91,6 +92,7 @@ namespace GameServer.Services
                 DBService.Instance.Entities.SaveChanges();
                 conn.Session.Response.userRegister.Result = Result.Success;
                 conn.Session.Response.userRegister.Errormsg = "None";
+                Log.InfoFormat("用户注册成功存在");
             }
             conn.SendResponse();
         }

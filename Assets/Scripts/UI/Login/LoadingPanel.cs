@@ -1,6 +1,7 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using Common;
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +11,18 @@ public class LoadingPanel : MonoBehaviour
     public Text textProgress;
 
     public GameObject LoginPanel;
+
+
+    private void Awake()
+    {
+        Log.Init("Login Panel");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine("Load");
-        Log.Info("");
+        Log.Info("1111");
     }
 
     // Update is called once per frame
