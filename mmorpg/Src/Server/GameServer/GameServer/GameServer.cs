@@ -30,7 +30,7 @@ namespace GameServer
             //DataManager.Instance.Load();
             //MapService.Instance.Init();
             UserService.Instance.Init();
-            FirstTestService.Instance.Init();
+            //FirstTestService.Instance.Init();
             //ItemService.Instance.Init();
             //QuestService.Instance.Init();
             //FriendService.Instance.Init();
@@ -72,7 +72,7 @@ namespace GameServer
         public void Start()
         {
             network.Start();
-            FirstTestService.Instance.Start();
+            //FirstTestService.Instance.Start();
             running = true;
             thread.Start();
         }
