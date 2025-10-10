@@ -82,11 +82,25 @@ namespace Services
         {
             if (this.pendingMessage != null)
             {
-                if(this.pendingMessage.Request.userRegister!=null)
+                if (this.pendingMessage.Request.userLogin!=null)
+                {
+                    if (this.OnLogin != null)
+                    {
+                        this.OnLogin(Result.Failed, string.Format("服务器断开！\n RESULT:{0} ERROR:{1}", result, reason));
+                    }
+                }
+                else if(this.pendingMessage.Request.userRegister!=null)
                 {
                     if (this.OnRegister != null)
                     {
                         this.OnRegister(Result.Failed, string.Format("服务器断开！\n RESULT:{0} ERROR:{1}", result, reason));
+                    }
+                }
+                else
+                {
+                    if (this.OnCharacterCreate != null)
+                    {
+                        this.OnCharacterCreate(Result.Failed, string.Format("服务器断开！\n RESULT:{0} ERROR:{1}", result, reason));
                     }
                 }
                 return true;
@@ -94,6 +108,11 @@ namespace Services
             return false;
         }
 
+        /// <summary>
+        /// 注册请求
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="psw"></param>
         public void SendRegister(string user, string psw)
         {
             Debug.LogFormat("UserRegisterRequest::user :{0} psw:{1}", user, psw);
@@ -115,6 +134,11 @@ namespace Services
             }
         }
 
+        /// <summary>
+        /// 注册响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="response"></param>
         void OnUserRegister(object sender, UserRegisterResponse response)
         {
             Debug.LogFormat("OnUserRegister:{0} [{1}]", response.Result, response.Errormsg);
@@ -125,7 +149,11 @@ namespace Services
 
             }
         }
-        
+        /// <summary>
+        /// 登录请求
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="psw"></param>
         public void SendLogin(string user, string psw)
         {
             Debug.LogFormat("UserRegisterRequest::user :{0} psw:{1}", user, psw);
@@ -147,13 +175,18 @@ namespace Services
             }
         }
         
+        /// <summary>
+        /// 登录响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="response"></param>
         void OnUserLogin(object sender, UserLoginResponse response)
         {
             Debug.LogFormat("OnUserRegister:{0} [{1}]", response.Result, response.Errormsg);
 
             if (response.Result == Result.Success)
             {
-                Models.User.Instance.SetupUserInfo(response.Userinfo);
+                Models.User.Instance.SetupUserInfo(response.Userinfo);//记得更新Model
             }
             if (this.OnLogin != null)
             {
