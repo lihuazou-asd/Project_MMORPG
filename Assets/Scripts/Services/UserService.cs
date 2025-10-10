@@ -12,6 +12,7 @@ namespace Services
 
         public UnityEngine.Events.UnityAction<Result, string> OnRegister;
         public UnityEngine.Events.UnityAction<Result, string> OnLogin;
+        public UnityEngine.Events.UnityAction<Result, string> OnCharacterCreate;
 
         NetMessage pendingMessage = null;
 
@@ -148,10 +149,35 @@ namespace Services
         {
             Debug.LogFormat("OnUserRegister:{0} [{1}]", response.Result, response.Errormsg);
 
-            if (this.OnRegister != null)
+            if (response.Result == Result.Success)
             {
-                this.OnRegister(response.Result, response.Errormsg);
+                Models.User.Instance.SetupUserInfo(response.Userinfo);
+            }
+            if (this.OnLogin != null)
+            {
+                this.OnLogin(response.Result, response.Errormsg);
 
+            }
+        }
+
+        public void SendCharacterCreate(string charName, CharacterClass className)
+        {
+            Debug.LogFormat("UserRegisterRequest::charName :{0} className:{1}",charName,className);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.createChar = new UserCreateCharacterRequest();
+            message.Request.createChar.Class = className;
+            message.Request.createChar.Name = charName;
+
+            if (this.connected && NetClient.Instance.Connected)
+            {
+                this.pendingMessage = null;
+                NetClient.Instance.SendMessage(message);
+            }
+            else
+            {
+                this.pendingMessage = message;
+                this.ConnectToServer();
             }
         }
     }
