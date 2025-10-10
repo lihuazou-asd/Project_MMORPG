@@ -55,7 +55,7 @@ public class UICharacterSelect : MonoBehaviour {
             return;
         }
         // SoundManager.Instance.PlaySound(SoundDefine.SFX_UI_Click);
-        UserService.Instance.SendCharacterCreate(this.charName.text, this.charClass);
+        UserService.Instance.SendUserCharacterCreate(this.charName.text, this.charClass);
     }
 
     /// <summary>
@@ -83,8 +83,9 @@ public class UICharacterSelect : MonoBehaviour {
     {
         if (result == Result.Success)
         {
+            panelCreate.SetActive(false);
+            panelSelect.SetActive(true);
             InitCharacterSelect(true);
-
         }
         else
             MessageBox.Show(message, "错误", MessageBoxType.Error);

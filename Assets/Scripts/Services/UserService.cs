@@ -24,6 +24,7 @@ namespace Services
             NetClient.Instance.OnDisconnect += OnGameServerDisconnect;
             MessageDistributer.Instance.Subscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Subscribe<UserLoginResponse>(this.OnUserLogin);
+            MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
         }
 
         public void Dispose()
@@ -31,6 +32,7 @@ namespace Services
             
             MessageDistributer.Instance.Unsubscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Unsubscribe<UserLoginResponse>(this.OnUserLogin);
+            MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
             NetClient.Instance.OnDisconnect -= OnGameServerDisconnect;
         }
@@ -160,7 +162,7 @@ namespace Services
             }
         }
 
-        public void SendCharacterCreate(string charName, CharacterClass className)
+        public void SendUserCharacterCreate(string charName, CharacterClass className)
         {
             Debug.LogFormat("UserRegisterRequest::charName :{0} className:{1}",charName,className);
             NetMessage message = new NetMessage();
@@ -178,6 +180,21 @@ namespace Services
             {
                 this.pendingMessage = message;
                 this.ConnectToServer();
+            }
+        }
+        void OnUserCharacterCreate(object sender, UserCreateCharacterResponse response)
+        {
+            Debug.LogFormat("OnUserCreateCharacter:{0} [{1}]", response.Result, response.Errormsg);
+
+            if(response.Result == Result.Success)
+            {
+                Models.User.Instance.Info.Player.Characters.Clear();
+                Models.User.Instance.Info.Player.Characters.AddRange(response.Characters);
+            }
+            if (this.OnCharacterCreate != null)
+            {
+                this.OnCharacterCreate(response.Result, response.Errormsg);
+
             }
         }
     }
