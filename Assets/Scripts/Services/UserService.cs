@@ -25,6 +25,7 @@ namespace Services
             MessageDistributer.Instance.Subscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Subscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Subscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
+            MessageDistributer.Instance.Subscribe<UserGameEnterResponse>(this.OnGameEnter);
         }
 
         public void Dispose()
@@ -33,6 +34,7 @@ namespace Services
             MessageDistributer.Instance.Unsubscribe<UserRegisterResponse>(this.OnUserRegister);
             MessageDistributer.Instance.Unsubscribe<UserLoginResponse>(this.OnUserLogin);
             MessageDistributer.Instance.Unsubscribe<UserCreateCharacterResponse>(this.OnUserCharacterCreate);
+            MessageDistributer.Instance.Unsubscribe<UserGameEnterResponse>(this.OnGameEnter);
             NetClient.Instance.OnConnect -= OnGameServerConnect;
             NetClient.Instance.OnDisconnect -= OnGameServerDisconnect;
         }
@@ -195,7 +197,12 @@ namespace Services
             }
         }
 
-        public void SendUserCharacterCreate(string charName, CharacterClass className)
+        /// <summary>
+        /// 发送角色创建请求
+        /// </summary>
+        /// <param name="charName"></param>
+        /// <param name="className"></param>
+        public void SendCharacterCreate(string charName, CharacterClass className)
         {
             Debug.LogFormat("UserRegisterRequest::charName :{0} className:{1}",charName,className);
             NetMessage message = new NetMessage();
@@ -215,6 +222,12 @@ namespace Services
                 this.ConnectToServer();
             }
         }
+        
+        /// <summary>
+        /// 收到角色创建响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="response"></param>
         void OnUserCharacterCreate(object sender, UserCreateCharacterResponse response)
         {
             Debug.LogFormat("OnUserCreateCharacter:{0} [{1}]", response.Result, response.Errormsg);
@@ -228,6 +241,47 @@ namespace Services
             {
                 this.OnCharacterCreate(response.Result, response.Errormsg);
 
+            }
+        }
+        
+        
+        /// <summary>
+        /// 发送角色创建请求
+        /// </summary>
+        /// <param name="charName"></param>
+        /// <param name="className"></param>
+        public void SendGameEnter(int charIdx)
+        {
+            Debug.LogFormat("UserGameEnterRequest::charIdx :{0} ",charIdx);
+            NetMessage message = new NetMessage();
+            message.Request = new NetMessageRequest();
+            message.Request.gameEnter = new UserGameEnterRequest();
+            message.Request.gameEnter.characterIdx = charIdx;
+
+            if (this.connected && NetClient.Instance.Connected)
+            {
+                this.pendingMessage = null;
+                NetClient.Instance.SendMessage(message);
+            }
+            else
+            {
+                this.pendingMessage = message;
+                this.ConnectToServer();
+            }
+        }
+        
+        /// <summary>
+        /// 收到角色创建响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="response"></param>
+        void OnGameEnter(object sender, UserGameEnterResponse response)
+        {
+            Debug.LogFormat("OnGameEnter:{0} [{1}]", response.Result, response.Errormsg);
+
+            if(response.Result == Result.Success)
+            {
+                
             }
         }
     }
