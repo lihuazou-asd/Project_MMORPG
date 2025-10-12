@@ -292,7 +292,7 @@ namespace Services
             Debug.LogFormat("OnCharacterEnterMap:{0} [{1}]", response.mapId, response.Characters.Count);
             NCharacterInfo a = response.Characters[0];
             Models.User.Instance.CurrentCharacter = a;
-            Debug.Log("Test::"+a.Id);
+            SceneManager.Instance.LoadScene("MainCity");
         }
     }
 }
