@@ -61,10 +61,10 @@ public class EntityController : MonoBehaviour
         if (entity != null)
             Debug.LogFormat("{0} OnDestroy :ID:{1} POS:{2} DIR:{3} SPD:{4} ", this.name, entity.entityId, entity.position, entity.direction, entity.speed);
 
-        // if(UIWorldElementManager.Instance!=null)
-        // {
-        //     UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
-        // }
+        if(UIWorldElementManager.Instance!=null)
+        {
+            UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
+        }
     }
 
     // Update is called once per frame
@@ -87,12 +87,12 @@ public class EntityController : MonoBehaviour
  //    }
  //
  //
- //    public void OnEntityRemoved()
- //    {
- //        if (UIWorldElementManager.Instance != null)
- //            UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
- //        Destroy(this.gameObject);
- //    }
+     public void OnEntityRemoved()
+     {
+         if (UIWorldElementManager.Instance != null)
+             UIWorldElementManager.Instance.RemoveCharacterNameBar(this.transform);
+         Destroy(this.gameObject);
+     }
 
     public void OnEntityEvent(EntityEvent entityEvent, int param)
     {

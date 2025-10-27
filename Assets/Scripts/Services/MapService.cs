@@ -49,6 +49,7 @@ public class MapService : Singleton<MapService>, IDisposable
     {
         if (DataManager.Instance.Maps.TryGetValue(mapId,out var map))
         {
+            User.Instance.CurrentMapData = map;
             SceneManager.Instance.LoadScene(map.Resource);
         }
     }

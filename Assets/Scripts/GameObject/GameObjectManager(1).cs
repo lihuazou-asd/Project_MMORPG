@@ -72,7 +72,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
             go.name = "Character_" + character.Id + "_" + character.Name;
             Characters[character.entityId] = go;
 
-            // UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
+            UIWorldElementManager.Instance.AddCharacterNameBar(go.transform, character);
         }
         this.InitGameObject(Characters[character.entityId], character);
     }
@@ -94,7 +94,7 @@ public class GameObjectManager : MonoSingleton<GameObjectManager>
 
             if (character.IsCurrentPlayer)
             {
-                // User.Instance.CurrentCharacterObject = pc;
+                User.Instance.CurrentCharacterObject = pc;
                 MainPlayerCamera.Instance.player = go;
                 pc.enabled = true;
                 pc.character = character;
